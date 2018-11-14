@@ -1,0 +1,67 @@
+LoginPartial style correction
+
+<!-- 
+Styling Overide --!>
+
+.li-dropdown {
+    text-align: center;
+    color: #777777;
+    background-color: #f8f8f8;
+
+	}
+.dropdown-menu > li > a.li-dropdown {
+    color: #777777;
+    background-color: #f8f8f8;
+    text-decoration: none;
+
+	}
+.dropdown-menu > li > a.li-
+:hover {
+	color: #333;
+	background-color: #f8f8f8
+
+	}
+.dropdown-menu > li > hr {
+    border-color: #777777;
+    margin: 0;
+
+	}
+.dropdown-menu > li > a.li-dropdown:hover {
+    color: #333;
+    background-color: #f8f8f8;
+    text-decoration: none;
+
+	}
+
+	
+<!--
+Appending Bundle --!>
+
+bundles.Add(new StyleBundle("~/Content/Admincss").Include("~/Content/AdminSite.css"));
+
+
+<!--
+Implementation --!>
+
+<li class="dropdown">
+	<a class="dropdown-toggle" data-toggle="dropdown" href="#">@(ViewData["FullName"])<span class="caret"></span></a>
+	<ul class="dropdown-menu li-dropdown" style="padding-top: 5px;">
+		<li class="li-dropdown">
+			<a class="li-dropdown" href="~/Manage/Index">My Info</a>
+		</li>
+		
+		@if (User.IsInRole("Admin"))
+		
+		{
+
+		<li>@Html.ActionLink("Admin", "Index", "User", new { area = "Employer"} , new { @class = "li-dropdown" } )</li>
+
+		}
+		
+		<li><hr /></li>
+		
+		<li>
+			<a class="li-dropdown btn" href="javascript:document.getElementById('logoutForm').submit()"> Log Off</a>
+		</li>
+	</ul>
+</li>	
