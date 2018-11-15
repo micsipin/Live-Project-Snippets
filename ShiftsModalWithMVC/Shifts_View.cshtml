@@ -1,0 +1,111 @@
+@model ScheduleUsers.Areas.Employer.ViewModels.ScheduleViewModel
+
+@{
+    ViewBag.Title = "Shift Creator";
+}
+<br />
+<h1>Shift Creator</h1>
+<br />
+<div class="container">
+    <div class="row"></div>
+    <div class="col-md-4">
+        <div class="row">
+			//This will run changeShiftTemplate() to enable or disable textbox depending on dropdownlist value*@
+			@Html.DropDownListFor(m => m.ScheduleTemplateId, Model.ScheduleTemplates, new { onchange = "changeShiftTemplate()", id = "dropdownshift", @class = "btn btn-default" })
+        </div>
+        <div class="row">
+            <small>@Html.Label("NameSchedule", "Schedule Name")</small><br />
+            @Html.TextBoxFor(c => c.ScheduleTemplates, new { @class = "form-control default", id = "scheduletextbox", @Value = "Type New Schedule Name" })
+            @Html.ValidationMessageFor(model => model.ScheduleTemplates, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            @Html.DropDownListFor(m => m.UserId, Model.Users, new { onchange = "loadCreate(Model.Users.Value)", @class = "btn btn-default" })
+            <br />
+        </div>
+        <div class="row">
+            <br />
+            <div class="col-md-4">
+                <br />
+                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#shiftModal">Open Shifts</a>
+            </div>
+        </div>
+        <div class="modal" id="shiftModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    
+					<div class="modal-header">
+						<h3 class="modal-title">Shifts</h3>
+						<a href="#" class="close" data-dismiss="modal">&times;</a>
+					</div>
+
+					<div class="modal-body" id="modal2">
+						<form id="modalForm">
+						//Dropdown for shift selection
+						@{ Html.RenderAction("ShiftModal", "Shift"); }
+						</form>
+						<div id="drop"></div>
+					</div>
+
+					<div class="modal-footer">
+					<a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+					<a href="@Url.Action("index", "Schedule")" class="btn btn-success" id="btnsubmit"> Submit</a>
+					</div>
+				
+				</div>
+			</div>
+        </div>
+		
+    </div>
+</div><br />
+
+<a href="/Employer/Shift">Back to Schedules</a>
+
+<script>
+
+   //Get partial for editing shifts after selecting shift in dropdown
+    $(document).ready(function () {
+        $('#selectShift').change(function () {
+            var Id = $("#selectShift").val();
+            var $modalTarget = $("#drop");
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("Edit", "Shift")",
+                data: { id: Id },
+                success: function (data) {
+                    $modalTarget.html(data);
+                    $('#drop').val(data);
+                }
+            })
+        })
+    })
+
+	//This fuction submits/updates form from Shift Modal
+    $(document).ready(function () {
+        $('#btnsubmit').click(function () {
+            var formdata = $("#modalForm").serialize();
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("index", "Schedule")",
+                data: formdata,
+                success: function (data) {
+                    $('#startTimeBox').val
+                    $("#modal2").val(data)
+                }
+            })
+        })
+    })
+    
+    function changeShiftTemplate() {
+        var e = document.getElementById("dropdownshift").value;
+        if (e = document.getElementById("dropdownshift").value == "No Template") {
+            document.getElementById("scheduletextbox").disabled = "disabled"
+        }
+        else if (e = "No Template") {
+            document.getElementById("scheduletextbox").disabled = ""
+        }
+    }
+	
+	</script>
