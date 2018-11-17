@@ -1,0 +1,19 @@
+@model List<SelectListItem>
+
+<h2>Edit</h2>
+<form action="/Employer/Shift/Edit?id=13f3ae9e-f971-4640-a88e-39b973f9272f" method="post">
+    <div class="form-horizontal">
+        <input name="__RequestVerificationToken" type="hidden" value="5C5bBPnfc68D8k-V3AINzwfk5v8fPdqiDtcN8FVzy1YkUfTaVrJOU4OqpxvfXD2NsFSJFRnQldmd81KCO8WCMO4bJn4bA8JkEOVFJzfkdUe5_zNEXUKD-vS79HOWrF0H5ezFh8tjwSHZotfkcAey3Q2" />
+        <input id="Id" name="Id" type="hidden" value="13f3ae9e-f971-4640-a88e-39b973f9272f" />
+        <h5>Shifts</h5>
+    </div>
+    <div class="col-md-5">
+        @Html.Label("shiftList", "Select shift to update or use.")
+        @Html.DropDownList("select", Model, new { @class = "form-control btn btn-default", @id = "selectShift" })
+    </div><br />
+
+</form>
+
+
+
+
