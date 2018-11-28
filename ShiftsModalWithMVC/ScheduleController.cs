@@ -28,7 +28,7 @@ namespace ScheduleUsers.Areas.Employer.Controllers
                                        ).ToList();
             
             //  adds default value to top of list and "no employee selected" option   //
-	   //  to the dropdown list for purpose of only creating a new template w/o an employee assigned  //
+	    //  to the dropdown list for purpose of only creating a new template w/o an employee assigned  //
   	    scheduleViewModel.Users.Insert(0, new SelectListItem
             {
                 Text = "Select an Employee",
