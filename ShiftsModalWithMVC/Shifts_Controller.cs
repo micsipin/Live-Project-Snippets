@@ -5,11 +5,8 @@ namespace ScheduleUsers.Areas.Employer.Controllers
     public class ShiftController : Controller
 
     {
-    	 /////////////////////////////////////////
         //  GET: Create/CreateScheduleForUser  //
-       ////////////////////////////////////////////////////////////////
-         //  This populates the partial, dropdownlist with shifts.  //
-	/////////////////////////////////////////////////////////////
+        //  This populates the partial, dropdownlist with shifts.  //
         public ActionResult ShiftModal()
         {
             var s = db.Shifts.ToList();
@@ -22,10 +19,8 @@ namespace ScheduleUsers.Areas.Employer.Controllers
 
             return PartialView("_ModalShifts", temp);
          }
-
-	  //////////////////////////////////
-         //  GET: Employer/Shift/Create  //
-	//////////////////////////////////
+	 
+        //  GET: Employer/Shift/Create  //
         public ActionResult Create(string Id)
         {
             var StartTime = db.Shifts.Find(Id);
@@ -38,9 +33,7 @@ namespace ScheduleUsers.Areas.Employer.Controllers
             return View();
         }
 	
-          //////////////////////////////////
-	 //  GET: Employer/Shift/Edit/5  //
-	//////////////////////////////////
+	//  GET: Employer/Shift/Edit/5  //
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -55,12 +48,9 @@ namespace ScheduleUsers.Areas.Employer.Controllers
             return PartialView(shift);
         }
 	
-	   /////////////////////////////////
-	  // GET: Employer/Shift/Edit/5  //
-         /////////////////////////////////////////
-	//  public JsonResult Edit(string id)  //
-       /////////////////////////////////////////
-	//{
+	// GET: Employer/Shift/Edit/5  //
+	// public JsonResult Edit(string id)  //
+	// {
         //    if (id == null)
         //    {
         //        return new JsonResult();
@@ -70,14 +60,11 @@ namespace ScheduleUsers.Areas.Employer.Controllers
         //    {
         //        return new JsonResult();
         //    }
-
         //    var shiftTimes = new { start = shift.StartTime.Value.ToShortTimeString() };
         //    return Json(shiftTimes,JsonRequestBehavior.AllowGet);
-        //}
+        // }
 	  
-	 ///////////////////////////////////
-        //  POST: Employer/Shift/Edit/5  //
-       ///////////////////////////////////
+        // POST: Employer/Shift/Edit/5  //
 	[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,StartTime,EndTime")] Shift shift)
@@ -91,9 +78,7 @@ namespace ScheduleUsers.Areas.Employer.Controllers
             return View(shift);
         }
 	
-	  ////////////////////////////////////
-	 //  GET: Employer/Shift/Delete/5  //
-	////////////////////////////////////
+	//  GET: Employer/Shift/Delete/5  //
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -108,9 +93,7 @@ namespace ScheduleUsers.Areas.Employer.Controllers
             return View(shift);
         }
 
-	  /////////////////////////////////////
-         //  POST: Employer/Shift/Delete/5  //
-	/////////////////////////////////////
+        //  POST: Employer/Shift/Delete/5  //
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
