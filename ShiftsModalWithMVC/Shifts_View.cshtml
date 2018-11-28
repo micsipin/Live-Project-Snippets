@@ -10,7 +10,7 @@
     <div class="row"></div>
     <div class="col-md-4">
         <div class="row">
-	    //This will run changeShiftTemplate() to enable or disable textbox depending on dropdownlist value
+	    //  This will run changeShiftTemplate() to enable or disable textbox depending on dropdownlist value  //
 	    @Html.DropDownListFor(m => m.ScheduleTemplateId, Model.ScheduleTemplates, new { onchange = "changeShiftTemplate()", id = "dropdownshift", @class = "btn btn-default" })
         </div>
         <div class="row">
@@ -65,7 +65,7 @@
 
 <script>
 
-   //Get partial for editing shifts after selecting shift in dropdown
+   //  Get partial for editing shifts after selecting shift in dropdown  //
     $(document).ready(function () {
         $('#selectShift').change(function () {
             var Id = $("#selectShift").val();
@@ -82,7 +82,7 @@
         })
     })
 
-	//This fuction submits/updates form from Shift Modal
+  //  This fuction submits/updates form from Shift Modal  //
     $(document).ready(function () {
         $('#btnsubmit').click(function () {
             var formdata = $("#modalForm").serialize();
@@ -99,4 +99,4 @@
     })
     
 	
-	</script>
+</script>
