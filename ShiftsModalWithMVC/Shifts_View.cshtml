@@ -10,7 +10,7 @@
     <div class="row"></div>
     <div class="col-md-4">
         <div class="row">
-	    //  This will run changeShiftTemplate() to enable or disable textbox depending on dropdownlist value  //
+	    //This will run changeShiftTemplate() to enable or disable textbox depending on dropdownlist value
 	    @Html.DropDownListFor(m => m.ScheduleTemplateId, Model.ScheduleTemplates, new { onchange = "changeShiftTemplate()", id = "dropdownshift", @class = "btn btn-default" })
         </div>
         <div class="row">
